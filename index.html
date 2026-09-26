@@ -533,7 +533,45 @@
 
 
         /* =========================================================
-           FECHAS Y LUGAR (CON EFECTO BORROSO)
+           CUENTA REGRESIVA
+        ========================================================= */
+
+        .countdown-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .countdown-item {
+            background: rgba(250, 250, 250, 0.9);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-small);
+            padding: 12px 8px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .countdown-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .countdown-label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+
+        /* =========================================================
+           FECHAS Y LUGAR
         ========================================================= */
 
         .dates {
@@ -555,39 +593,6 @@
             box-shadow:
                 inset 0 1px 0 rgba(255,255,255,0.9),
                 var(--shadow-soft);
-
-            overflow: hidden;
-        }
-
-        .blurred-content {
-            filter: blur(6px);
-            user-select: none;
-            pointer-events: none;
-            opacity: 0.6;
-        }
-
-        .pending-badge {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-
-            background: rgba(45, 45, 45, 0.88);
-            color: #ffffff;
-
-            padding: 8px 18px;
-            border-radius: 999px;
-
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            white-space: nowrap;
         }
 
         .date-item {
@@ -604,6 +609,8 @@
             font-size: 0.98rem;
 
             line-height: 1.6;
+
+            align-items: center;
         }
 
         .date-item + .date-item {
@@ -615,6 +622,26 @@
             color: var(--text-dark);
 
             font-weight: 700;
+        }
+
+        .blurred-text {
+            filter: blur(4px);
+            user-select: none;
+            opacity: 0.6;
+        }
+
+        .badge-inline {
+            display: inline-block;
+            background: rgba(45, 45, 45, 0.88);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-left: 8px;
+            vertical-align: middle;
         }
 
 
@@ -975,6 +1002,18 @@
                 margin-bottom: 4px;
             }
 
+            .countdown-container {
+                gap: 8px;
+            }
+
+            .countdown-number {
+                font-size: 1.4rem;
+            }
+
+            .countdown-label {
+                font-size: 0.6rem;
+            }
+
             .gallery-item {
                 flex-basis: 88%;
             }
@@ -1020,13 +1059,13 @@
 
                 La celebración ha sido
                 <span class="postponement-highlight">
-                    aplazada
+                    reprogramada
                 </span>
-                y próximamente compartiremos la nueva fecha.
+                para el <span class="postponement-highlight">06 de Febrero de 2027</span>.
 
                 <br><br>
 
-                Gracias por su comprensión y cariño.
+                Próximamente confirmaremos la ubicación exacta del evento. ¡Gracias por su amor y comprensión!
 
             </p>
 
@@ -1192,41 +1231,52 @@
 
 
             <!-- =================================================
-                 FECHAS Y LUGAR (BORROSO / POR DEFINIR)
+                 FECHA, CUENTA REGRESIVA Y LUGAR
             ================================================= -->
 
             <section class="section">
 
+                <h2 class="section-title">
+                    <span>Faltan</span>
+                </h2>
+
+                <!-- Contador Regresivo -->
+                <div class="countdown-container">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Días</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Min</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Seg</span>
+                    </div>
+                </div>
+
                 <div class="dates">
 
-                    <!-- Etiqueta sobrepuesta -->
-                    <div class="pending-badge">
-                        Por definir
+                    <div class="date-item">
+                        <strong>Fecha</strong>
+                        <span>Sábado, 06 de Febrero de 2027</span>
                     </div>
 
-                    <!-- Contenido difuminado -->
-                    <div class="blurred-content">
+                    <div class="date-item">
+                        <strong>Hora</strong>
+                        <span class> la misa comenzara a las 15:00 hrs</span>
+                        <span class="badge-inline">Por definir</span>
+                    </div>
 
-                        <div class="date-item">
-                            <strong>Misa</strong>
-                            <span>Sábado, 15 de Noviembre de 2025</span>
-                        </div>
-
-                        <div class="date-item">
-                            <strong>Hora</strong>
-                            <span>16:00 hrs</span>
-                        </div>
-
-                        <div class="date-item">
-                            <strong>Lugar</strong>
-                            <span>Parroquia de San Francisco de Asís</span>
-                        </div>
-
-                        <div class="date-item">
-                            <strong>Recepción</strong>
-                            <span>Salón Jardín Los Álamos</span>
-                        </div>
-
+                    <div class="date-item">
+                        <strong>Lugar</strong>
+                        <span class="blurred-text">Ubicación del evento</span>
+                        <span class="badge-inline">Por definir</span>
                     </div>
 
                 </div>
@@ -1278,7 +1328,7 @@
 
     </main>
 
-    <!-- JavaScript para música y funcionamiento de la galería -->
+    <!-- JavaScript para música, cuenta regresiva y galería -->
     <script>
         function iniciarInvitacion() {
             document.body.classList.add('loaded');
@@ -1289,6 +1339,34 @@
                 });
             }
         }
+
+        /* Lógica de la Cuenta Regresiva */
+        const targetDate = new Date('February 6, 2027 15:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            } else {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
 
         /* Lógica del slider de fotos */
         const slider = document.getElementById('photoSlider');
