@@ -662,8 +662,19 @@
             transform: translateY(-2px);
         }
 
+        /* Mapa embebido */
+        .map-image {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            margin-top: 14px;
+            border-radius: var(--radius-small);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-soft);
+        }
 
-        /* =========================================================
+/* =========================================================
            GALERÍA / ÁLBUM DE FOTOS
         ========================================================= */
 
@@ -1300,12 +1311,17 @@
                                rel="noopener">
                                 📍 Ver ubicación en Google Maps
                             </a>
+                            <a href="https://www.google.com/maps?q=19.6382833,-99.2569279"
+                               target="_blank"
+                               rel="noopener">
+                                <img class="map-image" src="fotos/direccion.png" alt="Dirección del evento">
+                            </a>
                         </span>
                     </div>
 
                 </div>
 
-            </section>
+</section>
 
 
             <!-- =================================================
