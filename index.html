@@ -644,6 +644,24 @@
             vertical-align: middle;
         }
 
+        /* Botón de Google Maps */
+        .map-link {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(45, 45, 45, 0.88);
+            color: #fff;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .map-link:hover {
+            background: #1f1f1f;
+            transform: translateY(-2px);
+        }
+
 
         /* =========================================================
            GALERÍA / ÁLBUM DE FOTOS
@@ -1065,7 +1083,7 @@
 
                 <br><br>
 
-                Próximamente confirmaremos la ubicación exacta del evento. ¡Gracias por su amor y comprensión!
+                Encuentra la ubicación del evento en la sección <span class="postponement-highlight">Lugar</span> de esta invitación. ¡Gracias por su amor y comprensión!
 
             </p>
 
@@ -1269,14 +1287,20 @@
 
                     <div class="date-item">
                         <strong>Hora</strong>
-                        <span class> la misa comenzara a las:</span>
+                        <span>la misa comenzara a las:</span>
                         <span class="badge-inline">14:30 hrs</span>
                     </div>
 
                     <div class="date-item">
                         <strong>Lugar</strong>
-                        <span class="blurred-text">Ubicación del evento</span>
-                        <span class="badge-inline">Por definir</span>
+                        <span>
+                            <a class="map-link"
+                               href="https://www.google.com/maps?q=19.6382833,-99.2569279"
+                               target="_blank"
+                               rel="noopener">
+                                📍 Ver ubicación en Google Maps
+                            </a>
+                        </span>
                     </div>
 
                 </div>
@@ -1340,8 +1364,8 @@
             }
         }
 
-        /* Lógica de la Cuenta Regresiva */
-        const targetDate = new Date('February 6, 2027 15:00:00').getTime();
+        /* Lógica de la Cuenta Regresiva (misa a las 14:30) */
+        const targetDate = new Date('February 6, 2027 14:30:00').getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
